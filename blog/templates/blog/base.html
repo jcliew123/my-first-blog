@@ -1,21 +1,28 @@
 {% load static %}
-<html>
+<html lang="en">
     <head>
         <title>Jc's blog</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <style>
+            h1, h2, h3, h4 {font-family: "Raleway", Arial, sans-serif;}
+        </style>
     </head>
     <body>
-        <div class="page-header">
+        <div class="page-header container-fluid clearfix">
             {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-                <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+                <h4><a href="{% url 'logout' %}"class="top-menu">Log out</a></h4>
+                <h4><a href="{% url 'post_new' %}" class="top-menu top-menu-item">Add</a></h4>
+                <h4><a href="{% url 'post_draft_list' %}" class="top-menu top-menu-item">Draft List</a></h4>
+                <h4><a href="{% url 'myself' %}" class="top-menu top-menu-item">{{ user.username }}</a></h4>
             {% else %}
-            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-            <a href="{% url 'myself' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
+            <h4><a href="{% url 'login' %}" class="top-menu">Log In</a></h4>
+            <h4><a href="{% url 'myself' %}" class="top-menu">My Profile</a></h4>
             {% endif %}
             <h1><a href="/">Jc's Blog</a></h1>
         </div>
@@ -29,8 +36,10 @@
             </div>
         </div>
 
-        <footer class="bottom">
-            <h5>Find me on social media.</h5>
+        <footer class="container-fluid">
+            <h4>Find me on social media.</h4>
+            <a href="https://www.facebook.com/gildartsliew.choong"><i class="fa fa-facebook-official fa-fw" style="color: black;"></i></a>
+            <a href="https://www.instagram.com/jianchoong/"><i class="fa fa-instagram fa-fw" style="color: black;"></i></a>
         </footer>
     </body>
 </html>
